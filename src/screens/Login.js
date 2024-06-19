@@ -39,7 +39,7 @@ const Login = (
           }
           else{
             alert('login successfully')
-            navigation.navigate('home');
+            navigation.navigate('home', {userData: data});
           }
         }
       )

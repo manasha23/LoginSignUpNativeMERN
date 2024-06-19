@@ -7,15 +7,25 @@ import Welcome  from './src/screens/Welcome.js'
 import Signup  from './src/screens/Signup.js'
 import Login  from './src/screens/Login.js'
 import Home from './src/screens/Home.js';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
+const Tab=createBottomTabNavigator();
 
+function HomeTabs() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={Welcome} options={{headerShown:false, tabBarIcon: null}}/>
+      <Tab.Screen name="Feed" component={Welcome} options={{headerShown:false, tabBarIcon: null}}/>
+    </Tab.Navigator>
+  );
+}
 
 const App = () => {
   return (
     <View style={styles.appContainer}>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="Welcome" component={Welcome}/>
+          <Stack.Screen name="Welcome" component={HomeTabs} options={{headerShown:false}}/>
           <Stack.Screen name="login" component={Login}/>
           {/* Stack.Screen name="login" must match the name which is mentioned in the onPress */}
           <Stack.Screen name="signup" component={Signup}/>
